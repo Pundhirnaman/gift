@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+        overflow: hidden;
+    }
+    .center {
+        text-align: center;
+        padding: 50px 20px;
+        color: white;
+    }
+    h1, h2 {
+        color: #ff4081;
+        word-wrap: break-word;
+    }
+    button {
+        font-size: 1.2em;
+        padding: 12px 25px;
+        margin: 15px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        background-color: #ff69b4; /* pink buttons */
+        color: white;
+    }
+    input {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 80%;
+        max-width: 300px;
+    }
+
+    /* Hearts in background */
+    .heart {
+        position: fixed;
+        color: #ff69b4; /* pink hearts */
+        animation: float 6s linear infinite;
+        font-size: 20px;
+        pointer-events: none;
+        z-index: 999;
+    }
+    @keyframes float {
+        0% {transform: translateY(100vh) scale(1);}
+        100% {transform: translateY(-10vh) scale(1.5);}
+    }
+
+    /* Text pages */
+    .textPage {
+        display: none;
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 30px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 20px;
+        color: #ff4081; /* pink text */
+        height: 70vh;
+        overflow-y: auto;
+        font-size: 1.2em;
+        line-height: 1.6em;
+        position: relative;
+    }
+
+    /* Floating hearts over text */
+    .textPage .textHeart {
+        position: absolute;
+        font-size: 20px;
+        color: #ff69b4; /* pink hearts over text */
+        animation: floatText 4s linear infinite;
+        pointer-events: none;
+    }
+    @keyframes floatText {
+        0% {transform: translateY(100%);}
+        100% {transform: translateY(-10%);}
+    }
+</style>
+</head>
+<body>
+
+<audio id="bgSong" loop>
+    <source src="tum mile.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<div style="text-align:center;margin:10px;">
+    <button onclick="toggleMusic()">Pause/Play Music</button>
+</div>
+
+<!-- Step 1: Do you love me? -->
+<div id="step1" class="center">
+    <h1>Do you love me? ❤️</h1>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+</div>
+
+<!-- Step 2: Do you want to see gift? -->
+<div id="step2" class="center" style="display:none;">
+    <h1>I knew it ❤️</h1>
+    <h2>I have a small gift for you. Do you want to see?</h2>
+    <button id="giftYes">Yes</button>
+</div>
+
+<!-- Step 3: One thing I love about you -->
+<div id="step3" class="center" style="display:none;">
+    <h2>What is one thing I love most about you?</h2>
+    <input type="text" id="answer" placeholder="Type your answer...">
+    <br><br>
+    <button id="checkAnswer">Submit</button>
+    <p id="wrong" style="color:red; display:none;">Try again 😏</p>
+</div>
+<!-- Text Pages 4-18 -->
+<div id="pageContainer">
+
+<!-- Page 4 -->
+<div class="textPage" id="page4">
+<h2>Betu's Eyes</h2>
+<p>Betu, your eyes are like the morning sun that brightens even my darkest days. Every time I look into your eyes, I see warmth, kindness, and a world that feels like home. The sparkle in your eyes reflects your love and the happiness you bring into my life. I could spend hours lost in the depth of your gaze, marveling at how beautiful, gentle, and captivating Betu’s eyes are. They speak a language that no words can capture, and every blink feels like a soft whisper of love. I am endlessly grateful for the comfort, the joy, and the silent conversations we share through your eyes. Truly, Betu, your eyes are my peace, my joy, and my safe haven, the place I always want to return to, every single day.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:50%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:80%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(5)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 5 -->
+<div class="textPage" id="page5">
+<h2>Betu's Long Hair</h2>
+<p>Betu, your long hair flows like a river of silk, graceful and mesmerizing. The softness, the shine, and the way it cascades is a sight that fills my heart with wonder. When the wind brushes through it, it seems like the world slows down just to admire Betu’s beauty. Every strand tells a story of elegance, care, and the time Betu spends nurturing herself. I love watching it shimmer in the sunlight and feel the warmth of your presence whenever your hair touches my hand. Truly, your long hair is not just beauty; it’s a reflection of your soul and the charm that makes every moment with Betu unforgettable.</p>
+<div class="textHeart" style="left:15%;">❤️</div>
+<div class="textHeart" style="left:60%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:85%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(6)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 6 -->
+<div class="textPage" id="page6">
+<h2>Betu's Love</h2>
+<p>Betu, the love Betu shows me is unconditional, comforting, and magical. It fills every corner of my heart with warmth. Betu’s love makes me believe in miracles, in happiness, and in a future we can build together. Her caring nature, her tender words, and her selfless acts show me daily that Betu is my safe haven. I cherish every laugh, every hug, and every little moment we share. Betu’s love is my anchor, my inspiration, and my greatest treasure. I want to hold it close, never let it go, and always remind Betu how deeply she is cherished.</p>
+<div class="textHeart" style="left:20%;">❤️</div>
+<div class="textHeart" style="left:40%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:70%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(7)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 7 -->
+<div class="textPage" id="page7">
+<h2>Betu's Birthday</h2>
+<p>Betu, your birthday is the most special day because it celebrates the existence of someone as amazing as Betu. Every year, this day reminds me of the joy you bring into my life and how blessed I am to have Betu by my side. Your laughter, your smiles, your gentle ways make every day brighter. I wish I could give you the world, all the happiness, love, and gifts that you deserve. Even if today I cannot provide everything, my heart is overflowing with wishes, love, and gratitude for Betu, for being my everything, my light, and my joy.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:50%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:80%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(8)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 8 -->
+<div class="textPage" id="page8">
+<h2> Apology and Love</h2>
+<p>Betu, I wish I could give Betu everything, all the material things that could make Betu happy. But right now, I don’t have enough money to give you the lavish gifts you deserve. I hope Betu can feel the depth of my love through my words, my actions, and my dedication. My love is priceless and eternal, and I promise Betu that in the future, I will do everything to give Betu the world. Please forgive me for the smallness of my current gifts; my heart beats only for Betu, and my love is limitless.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:50%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:80%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(9)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 9 -->
+<div class="textPage" id="page9">
+<h2>Betu's Support🫂</h2>
+<p>Betu, the way Betu supports me in every decision, every struggle, and every dream, makes me stronger. Her encouragement lifts me up, and her faith in me inspires me to become better every day. Betu’s unwavering support is a gift more valuable than anything else. Knowing that Betu is always by my side fills me with confidence, courage, and hope. I am truly grateful for Betu’s patience, understanding, and love, which guide me through life’s challenges. Thank you, Betu, for being my rock and my guiding star.</p>
+<div class="textHeart" style="left:15%;">❤️</div>
+<div class="textHeart" style="left:55%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:85%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(10)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 10 -->
+<div class="textPage" id="page10">
+<h2>Betu's Smile😍</h2>
+<p>Betu, your smile is the most beautiful sight I have ever seen. It has the power to erase all my worries, light up my world, and make every moment special. When Betu smiles, the world becomes brighter, and my heart overflows with happiness. I love seeing Betu happy and knowing that I can be part of that joy. Every smile Betu shares with me is a treasure, a memory I will always hold dear. Betu’s smile is my sunshine, my energy, and my inspiration to keep loving Betu endlessly.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:45%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:80%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(11)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 11 -->
+<div class="textPage" id="page11">
+<h2>you in Saree❤️</h2>
+<p>Betu, when Betu wears a saree, the world stops to admire her elegance. The grace, the beauty, and the charm that Betu carries in a saree is unparalleled. I feel proud and blessed to see Betu shine, looking breathtakingly beautiful. Every fold, every color, and every gesture make Betu look like a goddess. I am captivated every time, and my love grows stronger with every glance at Betu adorned in that elegance. Betu, you are my queen, my muse, and my pride.</p>
+<div class="textHeart" style="left:15%;">❤️</div>
+<div class="textHeart" style="left:50%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:85%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(12)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 12 -->
+<div class="textPage" id="page12">
+<h2>Betu's Kindness❤️</h2>
+<p>Betu, your heart is filled with kindness that touches everyone around you. The way Betu cares for others, comforts friends, and spreads positivity is truly inspiring. I learn from Betu every day about compassion, patience, and generosity. Betu, you are my role model in love and life. Your gentle ways and thoughtful gestures remind me how lucky I am to have Betu in my life.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:40%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:75%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(13)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 13 -->
+<div class="textPage" id="page13">
+<h2>Betu's Laughter</h2>
+<p>Betu, the sound of your laughter is music to my ears. It fills my heart with joy, makes my day brighter, and reminds me that life is beautiful with Betu around. Every laugh, giggle, or chuckle makes me fall in love with Betu even more. Your happiness is my happiness, and your smile and laughter are treasures I want to keep forever.</p>
+<div class="textHeart" style="left:15%;">❤️</div>
+<div class="textHeart" style="left:50%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:85%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(14)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 14 -->
+<div class="textPage" id="page14">
+<h2>Betu and My Life</h2>
+<p>Betu, being with Betu makes my life complete. Every moment, every conversation, and every memory we share adds color to my days. I cannot imagine life without Betu. You are my sunshine, my strength, and my everything. Betu, I promise to always cherish, love, and support Betu, through all challenges and joys. You are my home, my peace, and my happiness.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:45%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:80%; animation-duration:6s;">❤️</div>
+<div style="text-align:center;margin-top:20px;">
+<button onclick="nextPage(15)">Do you want to see the next gift?</button>
+</div>
+</div>
+
+<!-- Page 15 -->
+<div class="textPage" id="page15">
+<h2> Happy Birthday Betu!</h2>
+<p>Betu, on your birthday, I want to remind Betu how incredibly special Betu is. Every day with Betu is a blessing. Your beauty, your love, your care, and your presence make my life magical. I may not have grand gifts to offer, but my heart, my words, and my endless love belong to Betu completely. Happy birthday, Betu! May all your dreams come true, and may Betu always feel loved, cherished, and adored. I am forever grateful to celebrate Betu in my life and to witness your radiance, your joy, and your love. Betu, you are my world, my heart, and my forever. I love Betu endlessly, now and always.</p>
+<div class="textHeart" style="left:10%;">❤️</div>
+<div class="textHeart" style="left:50%; animation-duration:5s;">❤️</div>
+<div class="textHeart" style="left:80%; animation-duration:6s;">❤️</div>
+</div>
+
+</div>
+<!-- Popup -->
+<div id="birthdayPopup" class="modal">
+    <div class="modal-content">
+        <h2>Happy Birthday, Betu! 🎉🎂❤️</h2>
+        <p>Thank you for spending your precious time reading all the messages. I hope every word made you smile and feel my love. You are my peace, my happiness, my everything. On this special day, I wish you endless joy, laughter, and all the love that you deserve. Today we celebrate you and the beautiful soul you are. Remember, I love you endlessly and I am grateful for every moment with you.</p>
+        <button class="closeBtn" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script>
+// Heart Background
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.animationDuration = (Math.random()*2+3)+"s";
+        heart.innerText = "❤️";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }, 300);
+}
+startHearts();
+
+// Music Toggle
+const bgSong = document.getElementById("bgSong");
+function toggleMusic(){ if(bgSong.paused){ bgSong.play(); }else{ bgSong.pause(); } }
+
+// Step navigation
+const step1 = document.getElementById("step1");
+const step2 = document.getElementById("step2");
+const step3 = document.getElementById("step3");
+
+document.getElementById("yesBtn").onclick = ()=>{ step1.style.display="none"; step2.style.display="block"; };
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", function(){
+    const x = Math.floor(Math.random()*200)-100;
+    const y = Math.floor(Math.random()*200)-100;
+    noBtn.style.transform = `translate(${x}px,${y}px)`;
+});
+document.getElementById("giftYes").onclick = ()=>{ step2.style.display="none"; step3.style.display="block"; };
+document.getElementById("checkAnswer").onclick = ()=>{
+    const ans = document.getElementById("answer").value.trim().toLowerCase();
+    const valid=["your smile","your eyes","your love","your long hair"];
+    if(valid.includes(ans)){
+        step3.style.display="none";
+        document.getElementById("page4").style.display="block";
+        bgSong.currentTime=0; bgSong.play().catch(()=>{});
+    } else { document.getElementById("wrong").style.display="block"; }
+}
+
+// Next page function
+function nextPage(num){
+    const current=document.querySelector('.textPage:not([style*="display: none"])');
+    if(current) current.style.display="none";
+    const next=document.getElementById('page'+num);
+    if(next) next.style.display="block";
+}
+
+// Popup
+function showPopup(){
+    document.getElementById('birthdayPopup').style.display='block';
+}
+function closePopup(){
+    document.getElementById('birthdayPopup').style.display='none';
+}
+</script>
+
+</body>
+</html>
